@@ -1,0 +1,96 @@
+#: import Svg kivy.graphics.svg.Svg
+ScreenManager:
+    HomeScreen:
+    CaptureScreen:
+
+<HomeScreen@Screen>:
+    name: "home"
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: dp(12)
+        padding: dp(0)
+        md_bg_color: 1, 1, 1, 1
+        FloatLayout:
+            size_hint_y: None
+            height: dp(180)
+            Image:
+                source: "img/foto_login 1.png"
+                size_hint: None, None
+                width: dp(320)
+                height: dp(180)
+                pos_hint: {"x": 0, "top": 1}
+                allow_stretch: True
+                keep_ratio: True
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(8)
+            padding: dp(16)
+            Widget:
+                size_hint_y: None
+                height: dp(8)
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                size_hint_y: None
+                height: dp(90)
+                Image:
+                    source: "img/PPT_FINAL_HORIZONTAL 1 1.png"
+                    size_hint: None, None
+                    width: dp(260)
+                    height: dp(90)
+                    allow_stretch: True
+                    keep_ratio: True
+            Widget:
+                size_hint_y: None
+                height: dp(8)
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                size_hint_y: None
+                height: dp(48)
+                MDFillRoundFlatIconButton:
+                    text: "Definir Posto"
+                    icon: "home"
+                    md_bg_color: app.theme_cls.primary_color
+                    text_color: 1, 1, 1, 1
+                    on_release: app.define_posto()
+                    size_hint: None, None
+                    width: dp(180)
+            Widget:
+                size_hint_y: None
+                height: dp(4)
+            AnchorLayout:
+                anchor_x: "center"
+                anchor_y: "center"
+                size_hint_y: None
+                height: dp(28)
+                SvgIcon:
+                    size_hint: None, None
+                    size: dp(120), dp(28)
+                    source: "img/icon_sp_login.svg"
+            Widget:
+                size_hint_y: 1
+
+<CaptureScreen@Screen>:
+    name: "capture"
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: dp(8)
+        padding: dp(8)
+        MDTopAppBar:
+            title: "Coleta"
+            elevation: 10
+        Image:
+            id: img_view
+            size_hint: 1, 1
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(56)
+            spacing: dp(12)
+            MDRaisedButton:
+                text: "Alternar Câmera"
+                on_release: app.toggle_camera()
+            MDRaisedButton:
+                text: "Parar Coleta"
+                md_bg_color: app.theme_cls.error_color
+                on_release: app.stop_collect()
